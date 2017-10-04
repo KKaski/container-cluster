@@ -1,8 +1,8 @@
 resource "ibm_container_cluster" "kubecluster" {
   name         = "${var.cluster_name}-${random_id.name.hex}"
   datacenter   = "${var.datacenter}"
-  org_guid     = "${data.ibm_org.org.id}"
-  space_guid   = "${data.ibm_space.space.id}"
+  org_guid     = "${data.ibm_org.orgData.id}"
+  space_guid   = "${data.ibm_space.spaceData.id}"
   account_guid = "${data.ibm_account.account.id}"
   machine_type = "${var.machine_type}"
   public_vlan_id = "${var.public_vlan_id}"
@@ -14,8 +14,8 @@ resource "ibm_container_cluster" "kubecluster" {
 
 data "ibm_container_cluster_config" "cluster_config" {
   cluster_name_id = "${ibm_container_cluster.kubecluster.name}"
-  org_guid        = "${data.ibm_org.org.id}"
-  space_guid      = "${data.ibm_space.space.id}"
+  org_guid        = "${data.ibm_org.orgData.id}"
+  space_guid      = "${data.ibm_space.spaceData.id}"
   account_guid    = "${data.ibm_account.account.id}"
 }
 
