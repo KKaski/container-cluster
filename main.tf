@@ -2,16 +2,16 @@ provider "ibm" {
   bluemix_api_key = "${var.bluemix_api_key}"
 }
 
-data "ibm_org" "org" {
+data "ibm_org" "orgData" {
   org = "${var.org}"
 }
 
-data "ibm_space" "space" {
+data "ibm_space" "spaceData" {
   org   = "${var.org}"
   space = "${var.space}"
 }
 
-data "ibm_account" "account" {
+data "ibm_account" "accountData" {
   org_guid = "${data.ibm_org.orgData.id}"
 }
 
