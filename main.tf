@@ -12,7 +12,7 @@ data "ibm_space" "space" {
 }
 
 data "ibm_account" "account" {
-  org_guid = "${data.ibm_org.org.id}"
+  org_guid = "${data.ibm_org.orgData.id}"
 }
 
 resource "random_id" "name" {
